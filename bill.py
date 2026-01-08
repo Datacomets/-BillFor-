@@ -215,7 +215,7 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
         df["ใบสั่งขาย"]
             .astype(str)
             .str.split("-", n=1)
-            .str[0]
+            .str[0],
         ),
     )
 
