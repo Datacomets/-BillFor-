@@ -222,6 +222,7 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
     mask_dp = df["V"] == "ตัดใบรับมัดจำ#"
     df.loc[mask_dp, "Unnamed: 6"] = "ตัดใบรับมัดจำ#"
     df.loc[mask_dp, "Unnamed: 7"] = df.loc[mask_dp, "ส่วนลด"]
+    df.loc[mask_dp, "รวมทั้งสิ้น"] = df.loc[mask_dp, "มูลค่าสินค้า"]
 
     due_col = "ครบกำหนด" if col_exists("ครบกำหนด") else ("ครบกำหนด " if col_exists("ครบกำหนด ") else None)
 
@@ -243,7 +244,8 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
             "Unnamed: 7": "รายละเอียด",
             "Unnamed: 9": "หน่วยนับ",
             "new_col": "เลขที่ใบสั่งขาย",
-            "ครบกำหนด ": "ครบกำหนด",
+            "ครบกำหนด": "ครบกำหนด",
+            "มูลค่าสินค้า":"ราคาต่อหน่วย"
         }
     )
 
