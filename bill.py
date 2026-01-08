@@ -212,10 +212,10 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
     df["new_col"] = np.where(
         df["Unnamed: 6"].astype(str).str.contains("IN", na=False),
         "-",
-        np.where(
-            ~df["ใบสั่งขาย"].astype(str).str.contains("-", na=False),
-            df["ใบสั่งขาย"],
-            df["ใบสั่งขาย"],
+        df["ใบสั่งขาย"]
+            .astype(str)
+            .str.split("-", n=1)
+            .str[0]
         ),
     )
 
